@@ -14,3 +14,8 @@ plugins {
 rootProject.name = "GradleTutorial"
 
 includeBuild("groovy")
+
+// Agenda #2
+println("### INIT PHASE ### settings.gradle.kts of rootProject $rootProject")
+println("This will be called second")
+println()
