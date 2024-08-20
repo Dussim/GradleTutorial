@@ -1,5 +1,6 @@
 plugins {
     id("extensions")
+    id("vicareBest")
 }
 
 tasks.wrapper {
@@ -35,4 +36,19 @@ extension3 {
 extension4 {
     println("configuring extension4  which had parameter passed to property ${d.get()}")
     println("---\n")
+}
+
+vicareBest {
+    register("BuildConfig") {
+        type = ClassDescription.Type.DATA_OBJECT
+    }
+}
+
+tasks.register<VicareBestTask>("generateFiles") {
+    copies = 2
+    outputDirectory = layout.buildDirectory.dir("vicareBestGenerated")
+    packageName = "xyz.dussim.gradle.tutorial"
+
+    classNames.addAll(vicareBest.map { it.name })
+    classTypes.putAll(vicareBest.associateBy({ it.name }, { it.type.get() }))
 }

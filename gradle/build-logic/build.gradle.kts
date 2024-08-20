@@ -8,5 +8,10 @@ gradlePlugin {
             id = "extensions"
             implementationClass = "ExtensionsPlugin"
         }
+
+        register("irrelevant2") {
+            id = "vicareBest"
+            implementationClass = "VicareBestPlugin"
+        }
     }
 }
